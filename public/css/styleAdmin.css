@@ -1,0 +1,97 @@
+/*
+Auteur : Jérémie Cyr
+Date : 6 décembre 2021
+Description : CSS des pages d'administration
+*/
+#nombreClients{
+  margin-left: 40px;
+}
+
+#divListeClients, #divListeVentes{
+  display: flex;
+  flex-direction: row;
+}
+
+#listeClients, #listeVentes{
+  list-style-type: none;
+  width: 25%;
+  border: 1px solid black;
+}
+
+#boutonAjouterClient{
+  margin-left:40px;
+  height: 25px;
+}
+
+#boutonModifierClient{
+  margin-left: 10px;
+  height: 25px;
+}
+
+#boutonAjouterVente{
+  margin-left:40px;
+  height: 25px;
+}
+
+#boutonAjouterPaiement{
+  margin-left:5px;
+  height: 25px;
+}
+
+#boutonModifierPaiement{
+  margin-left: 5px;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+#boutonSupprimerPaiement{
+  margin-left: 10px;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+#boutonAjouterVoyage{
+  margin-left:40px;
+  height: 25px;
+}
+
+#boutonModifierVoyage, #boutonModifierVente, #boutonModifierClient{
+  margin-top: 25px;
+  margin-left: 5px;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+#boutonSupprimerVoyage, #boutonSupprimerVente, #boutonSupprimerClient{
+  margin-top: 25px;
+  margin-left: 10px;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+#boutonRetour{
+  color: white;
+  margin-left:5px
+}
+
+#id{
+  display: none;
+}
+
+.h4Titre{
+  font-size: larger;
+  font-weight: bolder;
+  margin-left:5px;
+}
+
+label{
+  margin-left:5px
+}
+
+img{
+  width: 300px;
+  height: auto;
+  margin-left: 5px;
+  margin-top: 20px;
+}
+
