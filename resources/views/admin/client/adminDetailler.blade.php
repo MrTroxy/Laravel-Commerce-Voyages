@@ -1,4 +1,4 @@
-@extends('./client/template')
+@extends('./admin/template')
 @section('titre')
    YvanDesVoyages-Compte
 @endsection
@@ -6,7 +6,7 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-auto">
-        <form method="post" action="/client/modifier">
+        <form method="post" action="/admin/client/modifier">
             @csrf
                 <div class="card shadow" style="margin-bottom: 15px">
                     <div class="car-header bg-success pt-2">
@@ -27,6 +27,7 @@
                         <div class="form-group">
                             <div class="d-flex flex-row">
                                 <div class="w-50 p-1">
+                                <input type="hidden" name="id" id="id" class="form-control" placeholder="" value="{{ $unClient->id }}"/>
                                     <label for="prenom"> Prénom </label>
                                     {!! $errors->first('prenom', '<small class="text-danger">:message</small>') !!}
                                     <input type="text" name="prenom" id="prenom" class="form-control" placeholder="" value="{{ $unClient->prenom }}"/>
@@ -43,7 +44,7 @@
                                 <div class="w-50 p-1">
                                     <label for="courriel"> Courriel </label>
                                     {!! $errors->first('courriel', '<small class="text-danger">:message</small>') !!}
-                                    <input type="text" name="courriel" id="email" class="form-control" placeholder="" value="{{ $unClient->courriel }}" readonly/>
+                                    <input type="text" name="courriel" id="email" class="form-control" placeholder="" value="{{ $unClient->courriel }}"/>
                                 </div>
 
                                 <div class="w-50 p-1">
@@ -118,7 +119,8 @@
                     </div>
 
                     <div class="card-footer d-inline-block">
-                        <button type="submit" class="btn btn-success"> Enregistrer les changements </button>
+                        <button type="submit" class="btn btn-success text-white"> Enregistrer les changements </button>
+                        <a href="{{ route('admin.client.lister') }}" class="btn btn-success text-white"> Retour </a>
                     </div>
                     @csrf
                 </div>

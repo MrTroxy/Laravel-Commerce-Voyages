@@ -143,7 +143,7 @@ class ClientController extends Controller
         // Liste des provinces
         $lesProvinces = Province::all();
         $lesPremiersContact = PremierContact::all();
-        $unClient = Client::where('courriel', '=', $request->session()->get('courriel'))->first();
+        $unClient = Client::where('courriel', '=', $request->session()->get('courriel'));
 
         return view('client/modifier')->with('lesProvinces', $lesProvinces)
                                     ->with('lesPremiersContact', $lesPremiersContact)
@@ -151,6 +151,8 @@ class ClientController extends Controller
                                     ->with('message', 'Les informations ont bien été enregistrées');
 
     }
+
+
 
 
 // ************************************************************************
@@ -174,10 +176,14 @@ class ClientController extends Controller
     //Fonction d'affichage des détails de l'administration
     public function adminDetailler(Request $request, $id)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
         {
-            $client = Client::find($id);
-            return view('client/adminDetailler')->with('client', $client);
+            $lesProvinces = Province::all();
+            $lesPremiersContact = PremierContact::all();
+            $unClient = Client::where('id', '=', $id)->first();
+            return view('admin/client/adminDetailler')->with('lesProvinces', $lesProvinces)
+                                                        ->with('lesPremiersContact', $lesPremiersContact)
+                                                        ->with('unClient', $unClient);
         }
         else
         {
@@ -189,11 +195,12 @@ class ClientController extends Controller
     //Fonction de modification d'un client de l'administration
     public function adminModifier(Request $request)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
         {
             // Valdation des données
             $request->validate
             ([
+                'courriel' => ['required', 'string', 'min:5', 'max:50' ],
                 'prenom' => ['required', 'string',  'min:3', 'max:10'],
                 'nom' => ['required', 'string',  'min:3', 'max:10'],      
                 'adresse' => ['required', 'string',  'min:5', 'max:28'],      
@@ -206,17 +213,21 @@ class ClientController extends Controller
                 'id' => ['required', 'integer']
             ]);
 
-            $client = Client::find($request->input('id'));
-            $client->prenom = $request->input('prenom');
-            $client->nom = $request->input('nom');
-            $client->adresse = $request->input('adresse');
-            $client->ville = $request->input('ville');
-            $client->CP = $request->input('codePostal');
-            $client->telephone = $request->input('telephone');
-            $client->genre = $request->input('genre');
-            $client->province_id = $request->input('province');
-            $client->premierContact_id = $request->input('premierContact');
-            $client->save();
+            $unClient = Client::where('id', '=', $request->input('id'))->first();
+            $unClient->courriel = $request->input('courriel');
+            $unClient->prenom = $request->input('prenom');
+            $unClient->nom = $request->input('nom');
+            $unClient->adresse = $request->input('adresse');
+            $unClient->ville = $request->input('ville');
+            $unClient->CP = $request->input('codePostal');
+            $unClient->telephone = $request->input('telephone');
+            $unClient->genre = $request->input('genre');
+            $unClient->province_id = $request->input('province');
+            $unClient->premierContact_id = $request->input('premierContact');
+            $unClient->save();
+            $tousLesClients = Client::all();
+            return redirect()->route('admin.client.lister')->with('message', 'Les informations ont bien été enregistrées')
+                                                            ->with('tousLesClients', $tousLesClients);
         }
         else
         {

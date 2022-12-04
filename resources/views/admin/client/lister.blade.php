@@ -40,8 +40,8 @@
                                 <td>{{ $unClient->ville }}</td>
                                 <td>{{ $unClient->CP }}</td>
                                 <td>
-                                    <a href="/admin/client/modifierCompte/{{ $unClient->id }}" class="btn btn-primary">Modifier</a>
-                                    <a href="/admin/client/supprimer/{{ $unClient->id }}" class="btn btn-danger">Supprimer</a>
+                                    <a href="/admin/client/adminDetailler/{{ $unClient->id }}" class="btn btn-primary text-white">Modifier</a>
+                                    <a href="/admin/client/supprimer/{{ $unClient->id }}" class="btn btn-danger text-white">Supprimer</a>
                                 </td>
                             </tr>
                         @endforeach

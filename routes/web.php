@@ -32,9 +32,6 @@ Route::post('/client/inscrire',     [ClientController::class, 'inscrire'])->name
 Route::get('/client/modifierCompte',    [ClientController::class, 'modifierCompte'])->name('client.modifierCompte');
 Route::post('/client/modifier',         [ClientController::class, 'modifier'])->name('client.modifier');
 
-Route::post('/client/modifier/{id}',        [ClientController::class, 'modifier'])->name('client.modifier');
-Route::get('/client/desinscrire/{id}',      [ClientController::class, 'desinscrire'])->name('client.desinscrire');
-
 // ... pour le panier
 Route::get('/panier/ajouter/{id}',                          [PanierController::class, 'ajouter'])->name('panier.ajouter');
 Route::get('/panier/afficher',                              [PanierController::class, 'afficher'])->name('panier.afficher');
@@ -50,9 +47,9 @@ Route::get('/panier/historique',                            [PanierController::c
 // ROUTES Application administrateur
 // ... pour l'Administration des clients
 Route::get('/admin/client/lister',          [ClientController::class, 'adminLister'])->name('admin.client.lister');
-Route::get('/admin/client/detailler/{id}',  [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
-Route::get('/admin/client/ajouter',         [ClientController::class, 'adminAjouter'])->name('admin.client.ajouter');
-Route::post('/admin/client/modifier/{id}',  [ClientController::class, 'adminModifier'])->name('admin.client.modifier');
+// Route pour la modification d'un client
+Route::get('/admin/client/adminDetailler/{id}',   [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
+Route::post('/admin/client/modifier',       [ClientController::class, 'adminModifier'])->name('admin.client.modifier');
 Route::get('/admin/client/supprimer/{id}',  [ClientController::class, 'adminSupprimer'])->name('admin.client.supprimer');
 
 // Routes pour l'Administration des voyages
