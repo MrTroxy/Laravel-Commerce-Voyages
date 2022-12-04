@@ -28,7 +28,7 @@
     </head>
     <body>
     @if (session('message'))  
-    <div class="alert alert-info">  
+    <div class="alert-danger text-center">  
         <strong>  
         {{ session('message') }}  
         </strong>  

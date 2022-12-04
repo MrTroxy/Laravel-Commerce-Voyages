@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
 use App\Models\Province;
 use App\Models\PremierContact;
+use App\Models\Vente;
 
 class ClientController extends Controller
 {
@@ -239,13 +240,13 @@ class ClientController extends Controller
     //Fonction de suppression d'un client de l'administration
     public function adminSupprimer(Request $request, $id)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
         {
-            $ventes = Vente::where('client_id', $id)->count();
-            if ($ventes == 0)
+            $lesVentes = Vente::where('client_id', $id)->count();
+            if ($lesVentes == 0)
             {
-                $client = Client::find($id);
-                $client->delete();
+                $unClient = Client::find($id);
+                $unClient->delete();
                 return back()->with('message', 'Client supprimé.');  
             }
             else
