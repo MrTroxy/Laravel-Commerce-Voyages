@@ -14,7 +14,7 @@
 				<ul class="products">
 					@foreach ($lesVentes as $uneVente) 
 						<li style="width: 90%; margin-bottom:24px; border:2px black solid;">
-							<a href="./voyage/detailler/{{$uneVente->unVoyage->id }}" style="display:flex; flex-direction:row; margin-bottom:10px">
+							<a href="../voyage/detailler/{{$uneVente->unVoyage->id }}" style="display:flex; flex-direction:row; margin-bottom:10px">
 								<div>
 									<img class="productimg" src="{{ $uneVente->unVoyage->imgLink }}" alt="" style="width: 300px">
 								</div>
