@@ -64,7 +64,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
     }
 
@@ -79,7 +79,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
     }
 
@@ -124,7 +124,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
     }
 
@@ -158,7 +158,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
     }
 
@@ -182,7 +182,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
 
     }
@@ -198,7 +198,7 @@ class VoyageController extends Controller
         }
         else
         {
-            return redirect()->route('vitrine.voyages')->with('message', 'Accès refusé.');
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
         }
     }
 }
