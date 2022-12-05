@@ -88,7 +88,6 @@ class ClientController extends Controller
         $lesProvinces = Province::all();
         $lesPremiersContact = PremierContact::all();
         $unClient = Client::where('courriel', '=', $request->session()->get('courriel'))->first();
-
         return view('client/modifier')->with('lesProvinces', $lesProvinces)
                                     ->with('lesPremiersContact', $lesPremiersContact)
                                     ->with('unClient', $unClient);
@@ -126,7 +125,7 @@ class ClientController extends Controller
         $unClient->premierContact_id = $request->input('premierContact');
 
         // Update des informations du client ou le courriel est egal au courriel de la session
-        Client::where('courriel', '=', $request->session()->get('courriel'))
+        Client::where('courriel', '=', $request->session()->get('courriel'))->first()
         ->update(
             [
                 'prenom' => $unClient->prenom,
@@ -144,12 +143,12 @@ class ClientController extends Controller
         // Liste des provinces
         $lesProvinces = Province::all();
         $lesPremiersContact = PremierContact::all();
-        $unClient = Client::where('courriel', '=', $request->session()->get('courriel'));
+        $unClient = Client::where('courriel', '=', $request->session()->get('courriel'))->first();
 
-        return view('client/modifier')->with('lesProvinces', $lesProvinces)
-                                    ->with('lesPremiersContact', $lesPremiersContact)
-                                    ->with('unClient', $unClient)
-                                    ->with('message', 'Les informations ont bien été enregistrées');
+        return redirect()->route('client.modifierCompte')->with('message', 'Les informations ont bien été enregistrées')
+                                ->with('lesProvinces', $lesProvinces)
+                                ->with('lesPremiersContact', $lesPremiersContact)
+                                ->with('unClient', $unClient);
 
     }
 
