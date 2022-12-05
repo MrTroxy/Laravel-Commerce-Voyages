@@ -17,6 +17,7 @@ class Vente extends Model
     public $timestamps = false;  //Utilisation de created_at et updated_at
     use HasFactory;
 
+    // Fonction qui retourne le voyage associé à la vente
     public function unVoyage()
     {
         return $this->belongsTo('App\Models\Voyage','voyage_id');
