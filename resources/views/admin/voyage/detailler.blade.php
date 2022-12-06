@@ -1,16 +1,16 @@
 @extends('./admin/template')
 @section('titre')
-   YvanDesVoyages-Compte
+   YvanDesVoyages-Voyages
 @endsection
 @section('contenu')
 <div class="container mt-3">
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-auto">
-        <form method="post" action="/admin/client/modifier">
+        <form method="post" action="/admin/voyage/modifier">
             @csrf
                 <div class="card shadow" style="margin-bottom: 15px">
                     <div class="car-header bg-success pt-2">
-                        <div class="card-title font-weight-bold text-white text-center"> Informations du Compte </div>
+                        <div class="card-title font-weight-bold text-white text-center"> Informations du Voyage </div>
                     </div>
 
                     <div class="card-body">

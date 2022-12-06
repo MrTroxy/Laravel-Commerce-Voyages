@@ -18,7 +18,7 @@
 				<!-- .entry-header -->
 
 				<div class="entry-content">
-                <a href="{{ url('admin/client/creerCompte') }}" class="btn btn-success text-white">Ajouter un client</a> <br><br>
+                <a href="{{ route('admin.client.creer') }}" class="btn btn-primary text-white">Ajouter un client</a> <br><br>
                 <table class="table table-striped display">
                     <thead>
                         <tr>

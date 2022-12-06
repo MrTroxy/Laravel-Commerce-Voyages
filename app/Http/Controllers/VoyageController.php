@@ -83,11 +83,22 @@ class VoyageController extends Controller
         }
     }
 
-
-    //Fonction d'ajout d'un voyage de l'administration
-    public function adminAjouterVoyage(Request $request)
+    // Fonction pour l'ajout d'un voyage dans l'administration
+    public function adminCreer(Request $request)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
+        {
+            $lesDepartements = Departement::all();
+            $lesCategories = Categorie::all();
+            return view('admin/voyage/inscrire')->with('lesDepartements', $lesDepartements)
+                                          ->with('lesCategories', $lesCategories);
+        }
+    }
+
+    // Fonction pour l'inscription d'un voyage dans l'administration
+    public function adminInscrire(Request $request)
+    {
+        if ($request->session()->get('admin') == 1)
         {
             // Valdation des données
             $request->validate
@@ -97,13 +108,14 @@ class VoyageController extends Controller
                 'duree' => ['required', 'integer', 'min:1'],
                 'ville' => ['required', 'string', 'min:3', 'max:24'],
                 'prix' => ['required', 'numeric', 'min:1'],
+                'imgLink' => ['required', 'string', 'min:3', 'max:1000'],
                 'departement' => ['required', 'integer'],
-                'categorie' => ['required', 'integer'],
+                'categorie' => ['required', 'integer']
             ]);
 
-            $voyage = Voyage::where('nomVoyage', $request->input('nomVoyage'))->count();
+            $unVoyage = Voyage::where('nomVoyage', $request->input('nomVoyage'))->count();
 
-            if ($voyage == 0)
+            if ($unVoyage == 0)
             {
                 $nouveauVoyage = new Voyage;
                 $nouveauVoyage->nomVoyage = $request->input('nomVoyage');
@@ -111,15 +123,19 @@ class VoyageController extends Controller
                 $nouveauVoyage->duree = $request->input('duree');
                 $nouveauVoyage->ville = $request->input('ville');
                 $nouveauVoyage->prix = $request->input('prix');
+                $nouveauVoyage->imgLink = $request->input('imgLink');
                 $nouveauVoyage->departement_id = $request->input('departement');
                 $nouveauVoyage->categorie_id = $request->input('categorie');
                 $nouveauVoyage->save();
 
-                return redirect()->route('voyages.admin')->with('message', 'Voyage ajouté.');
+                $tousLesVoyages = Voyage::all();
+
+                return redirect()->route('admin.voyage.lister')->with('message', 'Le voyage à bien été ajouté')
+                                                               ->with('tousLesClients', $tousLesVoyages);
             }
             else
             {
-                return redirect()->route('voyages.admin')->with('message', 'Voyage possédant ce nom existant.');
+                return redirect()->route('admin.voyage.lister')->with('message', 'Voyage possédant ce nom existant.');
             }
         }
         else

@@ -33,7 +33,7 @@
 
                     <div class="card-footer d-inline-block">
                         <button type="submit" class="btn btn-success"> Se connecter </button>
-                        <a href="/client/creerCompte" class="btn btn-success text-white"> Créer un compte </a>
+                        <a href="/client/creer" class="btn btn-success text-white"> Créer un compte </a>
                     </div>
                     @csrf
                 </div>

@@ -39,6 +39,9 @@
       <a style="margin-left:90%" class="nav-link" href="{{route('deconnecter')}}"> Déconnexion </a>
       <a style="margin-left:90%" class="nav-link" href="{{route('client.modifierCompte')}}"> Profil </a>
       <a style="margin-left:90%" class="nav-link" href="{{route('panier.historique')}}"> Historique d'achats </a>
+      @if (session('admin') == 1)
+      <a style="margin-left:90%" class="nav-link" href="{{route('admin.client.lister')}}"> Administration </a>
+      @endif
       @endif
       @if(!session()->exists('courriel'))
       <a style="margin-left:90%" class="nav-link" href="{{route('connecter')}}"> Connexion </a>

@@ -21,7 +21,7 @@ class ClientController extends Controller
 // ************************************************************************
 
     //Fonction de connexion du client au site
-    public function creerCompte(Request $request)
+    public function creer(Request $request)
     {
         // Liste des provinces
         $lesProvinces = Province::all();
@@ -210,6 +210,7 @@ class ClientController extends Controller
                 'genre' => ['required', 'string',  'min:1', 'max:1'], 
                 'province' => ['required', 'integer'], 
                 'premierContact' => ['required', 'integer'],
+                'admin' => ['required', 'integer'],
                 'id' => ['required', 'integer']
             ]);
 
@@ -224,6 +225,7 @@ class ClientController extends Controller
             $unClient->genre = $request->input('genre');
             $unClient->province_id = $request->input('province');
             $unClient->premierContact_id = $request->input('premierContact');
+            $unClient->admin = $request->input('admin');
             $unClient->save();
             $tousLesClients = Client::all();
             return redirect()->route('admin.client.lister')->with('message', 'Les informations ont bien été enregistrées')
@@ -236,7 +238,7 @@ class ClientController extends Controller
     }
 
     // Fonction pour l'ajout d'un client dans l'administration
-    public function adminCreerCompte(Request $request)
+    public function adminCreer(Request $request)
     {
         if ($request->session()->get('admin') == 1)
         {

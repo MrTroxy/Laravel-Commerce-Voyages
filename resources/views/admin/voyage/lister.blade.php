@@ -18,6 +18,7 @@
 				<!-- .entry-header -->
 
 				<div class="entry-content">
+                <a href="{{ route('admin.voyage.creer') }}" class="btn btn-primary text-white">Ajouter un voyage</a> <br><br>
                 <table class="table table-striped display">
                     <thead>
                         <tr>

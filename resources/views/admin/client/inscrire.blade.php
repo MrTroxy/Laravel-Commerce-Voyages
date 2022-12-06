@@ -1,4 +1,4 @@
-@extends('./client/template')
+@extends('./admin/template')
 @section('titre')
    YvanDesVoyages-Inscription
 @endsection
@@ -96,6 +96,7 @@
 
                     <div class="card-footer d-inline-block">
                         <button type="submit" class="btn btn-success"> Ajouter le client </button>
+                        <a href="{{ route('admin.client.lister') }}" class="btn btn-danger text-white"> Annuler </a>
                     </div>
                     @csrf
                 </div>

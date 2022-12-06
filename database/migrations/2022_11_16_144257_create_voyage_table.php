@@ -20,7 +20,7 @@ class CreateVoyageTable extends Migration
             $table->integer('duree')->nullable();
             $table->string('ville', 24)->nullable();
             $table->decimal('prix', 7)->nullable();
-            $table->string('imgLink', 300)->default('https://themelbournecoast.com/wp-content/uploads/2019/10/sunset-on-beach-goa-9WNQR7M.jpg');
+            $table->string('imgLink', 300)->nullable();
             $table->integer('departement_id')->nullable()->index('departement_id');
             $table->integer('categorie_id')->nullable()->index('categorie_id');
         });

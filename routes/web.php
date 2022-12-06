@@ -26,7 +26,7 @@ Route::get('/voyage',               [VoyageController::class, 'afficher'])->name
 Route::get('voyage/detailler/{id}', [VoyageController::class, 'detailler'])->name('voyage.detailler');
 
 // ... pour les clients
-Route::get('/client/creerCompte',   [ClientController::class, 'creerCompte'])->name('client.creerCompte');
+Route::get('/client/creer',   [ClientController::class, 'creer'])->name('client.creer');
 Route::post('/client/inscrire',     [ClientController::class, 'inscrire'])->name('client.inscrire');
 
 Route::get('/client/modifierCompte',    [ClientController::class, 'modifierCompte'])->name('client.modifierCompte');
@@ -51,7 +51,7 @@ Route::get('/admin/client/lister',          [ClientController::class, 'adminList
 Route::get('/admin/client/detailler/{id}',   [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
 Route::post('/admin/client/modifier',       [ClientController::class, 'adminModifier'])->name('admin.client.modifier');
 Route::get('/admin/client/supprimer/{id}',  [ClientController::class, 'adminSupprimer'])->name('admin.client.supprimer');
-Route::get('/admin/client/creerCompte',       [ClientController::class, 'adminCreerCompte'])->name('admin.client.creerCompte');
+Route::get('/admin/client/creer',       [ClientController::class, 'adminCreer'])->name('admin.client.creer');
 Route::post('/admin/client/inscrire',           [ClientController::class, 'adminInscrire'])->name('admin.client.inscrire');
 
 // Routes pour l'Administration des voyages
@@ -59,6 +59,8 @@ Route::get('/admin/voyage/lister',          [VoyageController::class, 'adminList
 Route::get('/admin/voyage/ajouter',         [VoyageController::class, 'adminAjouter'])->name('admin.voyage.ajouter');
 Route::post('/admin/voyage/modifier/{id}',  [VoyageController::class, 'adminModifier'])->name('admin.voyage.modifier');
 Route::get('/admin/voyage/supprimer/{id}',  [VoyageController::class, 'adminSupprimer'])->name('admin.voyage.supprimer');
+Route::get('/admin/voyage/creer',       [VoyageController::class, 'adminCreer'])->name('admin.voyage.creer');
+Route::post('/admin/voyage/inscrire',           [VoyageController::class, 'adminInscrire'])->name('admin.client.inscrire');
 
 // Routes pour l'Administration des ventes
 Route::get('/admin/vente/lister',           [VenteController::class, 'adminLister'])->name('admin.vente.lister');
