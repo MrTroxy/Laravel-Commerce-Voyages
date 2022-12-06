@@ -181,7 +181,7 @@ class ClientController extends Controller
             $lesProvinces = Province::all();
             $lesPremiersContact = PremierContact::all();
             $unClient = Client::where('id', '=', $id)->first();
-            return view('admin/client/adminDetailler')->with('lesProvinces', $lesProvinces)
+            return view('admin/client/detailler')->with('lesProvinces', $lesProvinces)
                                                         ->with('lesPremiersContact', $lesPremiersContact)
                                                         ->with('unClient', $unClient);
         }
@@ -227,6 +227,62 @@ class ClientController extends Controller
             $unClient->save();
             $tousLesClients = Client::all();
             return redirect()->route('admin.client.lister')->with('message', 'Les informations ont bien été enregistrées')
+                                                            ->with('tousLesClients', $tousLesClients);
+        }
+        else
+        {
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
+        }
+    }
+
+    // Fonction pour l'ajout d'un client dans l'administration
+    public function adminCreerCompte(Request $request)
+    {
+        if ($request->session()->get('admin') == 1)
+        {
+            $lesProvinces = Province::all();
+            $lesPremiersContact = PremierContact::all();
+            return view('admin/client/inscrire')->with('lesProvinces', $lesProvinces)
+                                          ->with('lesPremiersContact', $lesPremiersContact);
+        }
+    }
+
+    // Fonction pour l'ajout d'un client dans l'administration
+    public function adminInscrire(Request $request)
+    {
+        if ($request->session()->get('admin') == 1)
+        {
+            // Valdation des données
+            $request->validate
+            ([
+                'courriel' => ['required', 'string', 'min:5', 'max:50' ],
+                'prenom' => ['required', 'string',  'min:3', 'max:10'],
+                'nom' => ['required', 'string',  'min:3', 'max:10'],      
+                'adresse' => ['required', 'string',  'min:5', 'max:28'],      
+                'ville' => ['required', 'string',  'min:2', 'max:19'], 
+                'codePostal' => ['required', 'string',  'min:7', 'max:7'], 
+                'telephone' => ['required', 'string',  'min:10', 'max:14'], 
+                'genre' => ['required', 'string',  'min:1', 'max:1'], 
+                'province' => ['required', 'integer'], 
+                'premierContact' => ['required', 'integer'],
+                'admin' => ['required', 'integer']
+            ]);
+
+            $unClient = new Client();
+            $unClient->courriel = $request->input('courriel');
+            $unClient->prenom = $request->input('prenom');
+            $unClient->nom = $request->input('nom');
+            $unClient->adresse = $request->input('adresse');
+            $unClient->ville = $request->input('ville');
+            $unClient->CP = $request->input('codePostal');
+            $unClient->telephone = $request->input('telephone');
+            $unClient->genre = $request->input('genre');
+            $unClient->province_id = $request->input('province');
+            $unClient->premierContact_id = $request->input('premierContact');
+            $unClient->admin = $request->input('admin');
+            $unClient->save();
+            $tousLesClients = Client::all();
+            return redirect()->route('admin.client.lister')->with('message', 'Le client à bien été ajouté')
                                                             ->with('tousLesClients', $tousLesClients);
         }
         else

@@ -72,7 +72,7 @@ class VoyageController extends Controller
     //Affichage des détails d'un voyage de l'administration
     public function adminDetailsVoyage(Request $request, $id)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
         {
             $voyage = Voyage::find($id);
             return view('administrationDetailsVoyage')->with('voyage', $voyage);

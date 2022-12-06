@@ -18,6 +18,7 @@
 				<!-- .entry-header -->
 
 				<div class="entry-content">
+                <a href="{{ url('admin/client/creerCompte') }}" class="btn btn-success text-white">Ajouter un client</a> <br><br>
                 <table class="table table-striped display">
                     <thead>
                         <tr>
@@ -40,7 +41,7 @@
                                 <td>{{ $unClient->ville }}</td>
                                 <td>{{ $unClient->CP }}</td>
                                 <td>
-                                    <a href="/admin/client/adminDetailler/{{ $unClient->id }}" class="btn btn-primary text-white">Modifier</a>
+                                    <a href="/admin/client/detailler/{{ $unClient->id }}" class="btn btn-primary text-white">Modifier</a>
                                     <a href="/admin/client/supprimer/{{ $unClient->id }}" class="btn btn-danger text-white">Supprimer</a>
                                 </td>
                             </tr>

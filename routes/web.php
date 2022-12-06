@@ -48,9 +48,11 @@ Route::get('/panier/historique',                            [PanierController::c
 // ... pour l'Administration des clients
 Route::get('/admin/client/lister',          [ClientController::class, 'adminLister'])->name('admin.client.lister');
 // Route pour la modification d'un client
-Route::get('/admin/client/adminDetailler/{id}',   [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
+Route::get('/admin/client/detailler/{id}',   [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
 Route::post('/admin/client/modifier',       [ClientController::class, 'adminModifier'])->name('admin.client.modifier');
 Route::get('/admin/client/supprimer/{id}',  [ClientController::class, 'adminSupprimer'])->name('admin.client.supprimer');
+Route::get('/admin/client/creerCompte',       [ClientController::class, 'adminCreerCompte'])->name('admin.client.creerCompte');
+Route::post('/admin/client/inscrire',           [ClientController::class, 'adminInscrire'])->name('admin.client.inscrire');
 
 // Routes pour l'Administration des voyages
 Route::get('/admin/voyage/lister',          [VoyageController::class, 'adminLister'])->name('admin.voyage.lister');
