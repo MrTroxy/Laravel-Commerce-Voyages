@@ -49,7 +49,6 @@ class PanierController extends Controller
             return $unVoyage;
         });
 
-
         return view('/client/panier/afficher')->with('lesVoyagesDuPanier', $lesVoyagesDuPanier)
                                               ->with('nombreDeVoyages', $lesVoyagesDuPanier->count())
                                               ->with('etat_session', $etat_session);

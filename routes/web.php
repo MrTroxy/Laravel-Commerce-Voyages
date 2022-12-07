@@ -18,21 +18,23 @@ Route::get('/deconnecter',          [Controller::class, 'deconnecter'])->name('d
 
 
 
-// ROUTES Application e-commerce
-// ... pour la gestion des voyages
+//////////////////////////////////////
+//  ROUTES Application E-Commerce   //
+//////////////////////////////////////
+
+// Routes pour la gestion des voyages
 Route::get('/',                     [VoyageController::class, 'afficher'])->name('voyage.afficher');
 Route::get('/apropos',              [VoyageController::class, 'apropos'])->name('voyage.apropos');
 Route::get('/voyage',               [VoyageController::class, 'afficher'])->name('voyage.afficher');
 Route::get('voyage/detailler/{id}', [VoyageController::class, 'detailler'])->name('voyage.detailler');
 
-// ... pour les clients
+// Routes pour la gestion des clients
 Route::get('/client/creer',   [ClientController::class, 'creer'])->name('client.creer');
 Route::post('/client/inscrire',     [ClientController::class, 'inscrire'])->name('client.inscrire');
-
 Route::get('/client/modifierCompte',    [ClientController::class, 'modifierCompte'])->name('client.modifierCompte');
 Route::post('/client/modifier',         [ClientController::class, 'modifier'])->name('client.modifier');
 
-// ... pour le panier
+// Routes pour la gestion du panier
 Route::get('/panier/ajouter/{id}',                          [PanierController::class, 'ajouter'])->name('panier.ajouter');
 Route::get('/panier/afficher',                              [PanierController::class, 'afficher'])->name('panier.afficher');
 Route::get('/panier/supprimer/{id}',                        [PanierController::class, 'supprimer'])->name('panier.supprimer');
@@ -44,17 +46,19 @@ Route::get('/panier/historique',                            [PanierController::c
 
 
 
-// ROUTES Application administrateur
-// ... pour l'Administration des clients
+//////////////////////////////////////////
+//  ROUTES Application administrateur   //
+//////////////////////////////////////////
+
+// Routes pour l'Administration des Clients du site
 Route::get('/admin/client/lister',          [ClientController::class, 'adminLister'])->name('admin.client.lister');
-// Route pour la modification d'un client
 Route::get('/admin/client/detailler/{id}',   [ClientController::class, 'adminDetailler'])->name('admin.client.detailler');
 Route::post('/admin/client/modifier',       [ClientController::class, 'adminModifier'])->name('admin.client.modifier');
 Route::get('/admin/client/supprimer/{id}',  [ClientController::class, 'adminSupprimer'])->name('admin.client.supprimer');
 Route::get('/admin/client/creer',       [ClientController::class, 'adminCreer'])->name('admin.client.creer');
 Route::post('/admin/client/inscrire',           [ClientController::class, 'adminInscrire'])->name('admin.client.inscrire');
 
-// Routes pour l'Administration des voyages
+// Routes pour l'Administration des Voyages du site
 Route::get('/admin/voyage/lister',          [VoyageController::class, 'adminLister'])->name('admin.voyage.lister');
 Route::get('/admin/voyage/detailler/{id}',   [VoyageController::class, 'adminDetailler'])->name('admin.voyage.detailler');
 Route::post('/admin/voyage/modifier',  [VoyageController::class, 'adminModifier'])->name('admin.voyage.modifier');
@@ -62,6 +66,6 @@ Route::get('/admin/voyage/supprimer/{id}',  [VoyageController::class, 'adminSupp
 Route::get('/admin/voyage/creer',       [VoyageController::class, 'adminCreer'])->name('admin.voyage.creer');
 Route::post('/admin/voyage/inscrire',           [VoyageController::class, 'adminInscrire'])->name('admin.client.inscrire');
 
-// Routes pour l'Administration des ventes
+// Routes pour l'Administration des Ventes/Paiements du site
 Route::get('/admin/vente/lister',           [VenteController::class, 'adminLister'])->name('admin.vente.lister');
 

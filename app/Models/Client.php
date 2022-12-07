@@ -29,10 +29,4 @@ class Client extends Model
         return $this->belongsTo(PremierContact::class);
     }
 
-    //Récupère les commandes du client
-    public function commandes()
-    {
-        return $this->hasMany(Commande::class);
-    }
-
 }

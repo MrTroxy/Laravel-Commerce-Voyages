@@ -18,11 +18,6 @@ class Panier extends Model
         return $this->belongsTo('App\Models\Voyage', 'voyage_id');
     }
 
-    public function tousLesVoyagesDuPanier()
-    {
-        return $this->hasMany('App\Models\Voyage', 'voyage_id');
-    }
-
     // Récupère le client du panier
     public function leClient()
     {

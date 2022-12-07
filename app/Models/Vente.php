@@ -23,11 +23,13 @@ class Vente extends Model
         return $this->belongsTo('App\Models\Voyage','voyage_id');
     }
 
+    // Fonction qui retourne le client associé à la vente
     public function unClient()
     {
         return $this->belongsTo('App\Models\Client','client_id');
     }
 
+    // Fonction qui retourne les paiements associés à la vente
     public function unPaiement()
     {
         return $this->hasMany('App\Models\Paiement','vente_id');

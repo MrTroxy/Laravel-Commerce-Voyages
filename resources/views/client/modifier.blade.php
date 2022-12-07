@@ -107,13 +107,6 @@
                                     @endif
                                 @endforeach
                             </select>
-
-
-
-        <!-- Afficher les premiers contacts de la table premiercontact -->
-
-
-        
                         </div>
                     </div>
 

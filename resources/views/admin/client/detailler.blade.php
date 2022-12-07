@@ -119,13 +119,6 @@
                                     <option value="0" selected>Non</option>
                                 @endif
                             </select>
-
-
-
-        <!-- Afficher les premiers contacts de la table premiercontact -->
-
-
-        
                         </div>
                     </div>
 

@@ -47,35 +47,15 @@ class VoyageController extends Controller
                                                 ->with('saRegion', $saRegion);
     }
 
-
-    //Affichage de la liste des voyages de l'administration
-    public function adminVoyages(Request $request)
+    // Fonction d'affichage des voyages de l'administration
+    public function adminLister(Request $request)
     {
         if ($request->session()->get('admin')==1)
         {
             $tousLesVoyages = Voyage::all();
             $nombreVoyages = $tousLesVoyages->count();
-            $tousLesDepartements = Departement::all();
-            $toutesLesCategories = Categorie::all();
-            return view('administrationVoyages')->with("tousLesVoyages", $tousLesVoyages)
-                                                ->with("nombreVoyages", $nombreVoyages)
-                                                ->with('tousLesDepartements', $tousLesDepartements)
-                                                ->with('toutesLesCategories', $toutesLesCategories);
-        }
-        else
-        {
-            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
-        }
-    }
-
-
-    //Affichage des détails d'un voyage de l'administration
-    public function adminDetailsVoyage(Request $request, $id)
-    {
-        if ($request->session()->get('admin') == 1)
-        {
-            $voyage = Voyage::find($id);
-            return view('administrationDetailsVoyage')->with('voyage', $voyage);
+            return view('admin.voyage.lister')->with("tousLesVoyages", $tousLesVoyages)
+                                                ->with("nombreVoyages", $nombreVoyages);
         }
         else
         {
@@ -229,21 +209,6 @@ class VoyageController extends Controller
 
     }
 
-    // Fonction d'affichage des voyages de l'administration
-    public function adminLister(Request $request)
-    {
-        if ($request->session()->get('admin')==1)
-        {
-            $tousLesVoyages = Voyage::all();
-            $nombreVoyages = $tousLesVoyages->count();
-            return view('admin.voyage.lister')->with("tousLesVoyages", $tousLesVoyages)
-                                                ->with("nombreVoyages", $nombreVoyages);
-        }
-        else
-        {
-            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
-        }
-    }
 }
 
 

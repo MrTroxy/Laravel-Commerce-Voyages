@@ -77,13 +77,6 @@
                                     <option value="{{ $uneCategorie->id }}" {{ $uneCategorie->id == $unVoyage->categorie_id ? 'selected' : '' }}> {{ $uneCategorie->categorie }} </option>
                                 @endforeach
                             </select>
-
-
-
-        <!-- Afficher les premiers contacts de la table premiercontact -->
-
-
-        
                         </div>
                     </div>
 

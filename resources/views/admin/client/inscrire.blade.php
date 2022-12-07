@@ -84,13 +84,6 @@
                                 <option value="0">Non</option>
                                 <option value="1">Oui</option>
                             </select>
-
-
-
-        <!-- Afficher les premiers contacts de la table premiercontact -->
-
-
-        
                         </div>
                     </div>
 
