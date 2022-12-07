@@ -7,4 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Projet de Session en Laravel
+
+// Auteur : David Tremblay
+
+// Installation du projet
+
+Nom de la base de donnée : agencevoyage_dt
+
+Pour faire fonctionner le projet, il faut se rendre dans la racine du dossier et faire la commande suivante :
+## > php artisan serve
+
+Le site devrait fonctionner
