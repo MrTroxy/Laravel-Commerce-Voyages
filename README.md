@@ -11,7 +11,7 @@
 
 // Auteur : David Tremblay
 
-// Installation du projet
+## Installation du projet
 
 Nom de la base de donnée : agencevoyage_dt
 
