@@ -56,8 +56,8 @@ Route::post('/admin/client/inscrire',           [ClientController::class, 'admin
 
 // Routes pour l'Administration des voyages
 Route::get('/admin/voyage/lister',          [VoyageController::class, 'adminLister'])->name('admin.voyage.lister');
-Route::get('/admin/voyage/ajouter',         [VoyageController::class, 'adminAjouter'])->name('admin.voyage.ajouter');
-Route::post('/admin/voyage/modifier/{id}',  [VoyageController::class, 'adminModifier'])->name('admin.voyage.modifier');
+Route::get('/admin/voyage/detailler/{id}',   [VoyageController::class, 'adminDetailler'])->name('admin.voyage.detailler');
+Route::post('/admin/voyage/modifier',  [VoyageController::class, 'adminModifier'])->name('admin.voyage.modifier');
 Route::get('/admin/voyage/supprimer/{id}',  [VoyageController::class, 'adminSupprimer'])->name('admin.voyage.supprimer');
 Route::get('/admin/voyage/creer',       [VoyageController::class, 'adminCreer'])->name('admin.voyage.creer');
 Route::post('/admin/voyage/inscrire',           [VoyageController::class, 'adminInscrire'])->name('admin.client.inscrire');

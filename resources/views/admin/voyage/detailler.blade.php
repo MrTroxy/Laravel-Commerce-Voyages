@@ -24,100 +24,58 @@
                             @endif
 
                         <div class="form-group">
-                            <div class="d-flex flex-row">
-                                <div class="w-50 p-1">
-                                <input type="hidden" name="id" id="id" class="form-control" placeholder="" value="{{ $unClient->id }}"/>
-                                    <label for="prenom"> Prénom </label>
-                                    {!! $errors->first('prenom', '<small class="text-danger">:message</small>') !!}
-                                    <input type="text" name="prenom" id="prenom" class="form-control" placeholder="" value="{{ $unClient->prenom }}"/>
-                                </div>
+                            <input type="hidden" name="id" id="id" class="form-control" placeholder="" value="{{ $unVoyage->id }}"/>
 
-                                <div class="w-50 p-1">
-                                    <label for="nom"> Nom </label>
-                                    {!! $errors->first('nom', '<small class="text-danger">:message</small>') !!}
-                                    <input type="text" name="nom" id="nom" class="form-control" placeholder="" value="{{ $unClient->nom }}"/>
-                                </div>
-                            </div> <br>
+                            <!-- Champ pour le nomVoyage -->
+                            <label for="nomVoyage"> Entrez le nom du voyage </label>
+                            {!! $errors->first('nomVoyage', '<small class="text-danger">:message</small>') !!}
+                            <input type="text" name="nomVoyage" id="nomVoyage" class="form-control" placeholder="" value="{{ $unVoyage->nomVoyage }}"/>
 
-                            <div class="d-flex flex-row">
-                                <div class="w-50 p-1">
-                                    <label for="courriel"> Courriel </label>
-                                    {!! $errors->first('courriel', '<small class="text-danger">:message</small>') !!}
-                                    <input type="text" name="courriel" id="email" class="form-control" placeholder="" value="{{ $unClient->courriel }}"/>
-                                </div>
-
-                                <div class="w-50 p-1">
-                                    <label for="telephone"> Téléphone </label>
-                                    {!! $errors->first('telephone', '<small class="text-danger">:message</small>') !!}
-                                    <input type="text" name="telephone" id="telephone" class="form-control" placeholder="" value="{{ $unClient->telephone }}"/>
-                                </div>
-                            </div> <br>
-                            
-                            <label for="adresse"> Adresse </label>
-                            {!! $errors->first('adresse', '<small class="text-danger">:message</small>') !!}
-                            <input type="text" name="adresse" id="adresse" class="form-control" placeholder="" value="{{ $unClient->adresse }}"/>
-
-                            <label for="ville"> Ville </label>
+                            <!-- Champ pour la ville -->
+                            <label for="ville"> Entrez la ville </label>
                             {!! $errors->first('ville', '<small class="text-danger">:message</small>') !!}
-                            <input type="text" name="ville" id="ville" class="form-control" placeholder="" value="{{ $unClient->ville }}"/>
+                            <input type="text" name="ville" id="ville" class="form-control" placeholder="" value="{{ $unVoyage->ville }}"/>
 
-                            <label for="codePostal"> Code Postal </label>
-                            {!! $errors->first('codePostal', '<small class="text-danger">:message</small>') !!}
-                            <input type="text" name="codePostal" id="codePostal" class="form-control" placeholder="" value="{{ $unClient->CP }}"/>
+                            <!-- Champ pour la dateDebut -->
+                            <label for="dateDebut"> Entrez la date de début </label>
+                            {!! $errors->first('dateDebut', '<small class="text-danger">:message</small>') !!}
+                            <input type="date" name="dateDebut" id="dateDebut" class="form-control" placeholder="" value="{{ $unVoyage->dateDebut }}"/>
 
-                            <label for="province"> Province </label>
-                            {!! $errors->first('province', '<small class="text-danger">:message</small>') !!}
-                            <select name="province" id="province" class="form-control" placeholder="" value="{{ old('province') }}">
-                                @foreach($lesProvinces as $uneProvince)
-                                    @if($uneProvince->id == $unClient->province_id)
-                                        <option value="{{ $uneProvince->id }}" selected>{{ $uneProvince->province }}</option>
-                                    @else
-                                        <option value="{{ $uneProvince->id }}">{{ $uneProvince->province }}</option>
-                                    @endif
-                                @endforeach
-                            </select> <br>
+                            <!-- Champ pour la duree -->
+                            <label for="duree"> Entrez la durée</label><small class="text-success"> (En jours)</small>
+                            {!! $errors->first('duree', '<small class="text-danger">:message</small>') !!}
+                            <input type="text" name="duree" id="duree" class="form-control" placeholder="" value="{{ $unVoyage->duree }}"/>
 
-                            <label for="genre"> Genre </label>
-                            {!! $errors->first('genre', '<small class="text-danger">:message</small>') !!}
-                            <select name="genre" id="genre" class="form-control" placeholder="" value="{{ $unClient->genre }}">
-                                    <option value="{{$unClient->genre}}" selected>{{$unClient->genre}}</option>
-                                    @if($unClient->genre == "M")
-                                        <option value="F">F</option>
-                                        <option value="A">A</option>
-                                    @endif
-                                    @if($unClient->genre == "F")
-                                        <option value="M">M</option>
-                                        <option value="A">A</option>
-                                    @endif
-                                    @if($unClient->genre == "A")
-                                        <option value="M">M</option>
-                                        <option value="F">F</option>
-                                    @endif
-                            </select> <br>
+                            <!-- Champ pour le prix -->
+                            <label for="prix"> Entrez le prix </label>
+                            {!! $errors->first('prix', '<small class="text-danger">:message</small>') !!}
+                            <input type="text" name="prix" id="prix" class="form-control" placeholder="" value="{{ $unVoyage->prix }}"/>
 
+                            <!-- Champ pour le imgLink --> <br>
+                            <label for="imgLink"> Modifier le lien de l'image actuelle </label> <br>
+                            <img src="{{ $unVoyage->imgLink }}" alt="Image du voyage" class="img-fluid" style="margin-bottom: 10px"> <br>
+                            {!! $errors->first('imgLink', '<small class="text-danger">:message</small>') !!}
+                            <input type="text" name="imgLink" id="imgLink" class="form-control" placeholder="" value="{{ $unVoyage->imgLink }}"/>
 
-                            <label for="premierContact"> De qu'elle façon nous avez vous découvert? </label>
-                            {!! $errors->first('premierContact', '<small class="text-danger">:message</small>') !!}
-                            <select name="premierContact" id="premierContact" class="form-control" placeholder="" value="{{ old('premierContact') }}">
-                                @foreach($lesPremiersContact as $unPremierContact)
-                                    @if($unPremierContact->id == $unClient->premierContact_id)
-                                        <option value="{{ $unPremierContact->id }}" selected>{{ $unPremierContact->premierContact }}</option>
-                                    @else
-                                        <option value="{{ $unPremierContact->id }}">{{ $unPremierContact->premierContact }}</option>
-                                    @endif
+                            <!-- Champ pour le departement -->
+                            <label for="departement"> Choisir le département </label>
+                            {!! $errors->first('departement', '<small class="text-danger">:message</small>') !!}
+                            <select name="departement" id="departement" class="form-control">
+                                <option value="0"> Choisir un département </option>
+                                @foreach($lesDepartements as $unDepartement)
+                                    <option value="{{ $unDepartement->id }}" {{ $unDepartement->id == $unVoyage->departement_id ? 'selected' : '' }}> {{ $unDepartement->nomDepartement }} </option>
                                 @endforeach
                             </select>
 
-                            <label for="admin"> Est-ce que le compte est un admin? </label>
-                            {!! $errors->first('admin', '<small class="text-danger">:message</small>') !!}
-                            <select name="admin" id="admin" class="form-control" placeholder="" value="{{ old('admin') }}">
-                                @if($unClient->admin == 1)
-                                    <option value="1" selected>Oui</option>
-                                    <option value="0">Non</option>
-                                @else
-                                    <option value="1">Oui</option>
-                                    <option value="0" selected>Non</option>
-                                @endif
+
+                            <!-- Champ pour la categorie -->
+                            <label for="categorie"> Choisir la catégorie </label>
+                            {!! $errors->first('categorie', '<small class="text-danger">:message</small>') !!}
+                            <select name="categorie" id="categorie" class="form-control">
+                                <option value="0"> Choisir une catégorie </option>
+                                @foreach($lesCategories as $uneCategorie)
+                                    <option value="{{ $uneCategorie->id }}" {{ $uneCategorie->id == $unVoyage->categorie_id ? 'selected' : '' }}> {{ $uneCategorie->categorie }} </option>
+                                @endforeach
                             </select>
 
 
@@ -131,7 +89,7 @@
 
                     <div class="card-footer d-inline-block">
                         <button type="submit" class="btn btn-success text-white"> Enregistrer les changements </button>
-                        <a href="{{ route('admin.client.lister') }}" class="btn btn-danger text-white"> Annuler </a>
+                        <a href="{{ route('admin.voyage.lister') }}" class="btn btn-danger text-white"> Annuler </a>
                     </div>
                     @csrf
                 </div>

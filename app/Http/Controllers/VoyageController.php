@@ -145,32 +145,17 @@ class VoyageController extends Controller
     }
 
 
-    //Fonction de modification d'un voyage de l'administration
-    public function adminModifierVoyage(Request $request)
+    //Fonction d'affichage des détails d'un voyage de l'administration
+    public function adminDetailler(Request $request, $id)
     {
-        if ($request->session()->get('admin')==1)
+        if ($request->session()->get('admin') == 1)
         {
-            // Valdation des données
-            $request->validate
-            ([
-                'dateDebut' => ['required', 'date'],
-                'duree' => ['required', 'integer', 'min:1'],
-                'ville' => ['required', 'string', 'min:3', 'max:24'],
-                'prix' => ['required', 'numeric', 'min:1'],
-                'departement' => ['required', 'integer'],
-                'categorie' => ['required', 'integer'],
-                'id' => ['required', 'integer'],
-            ]);
-
-            $voyage = Voyage::find($request->input('id'));
-            $voyage->dateDebut = $request->input('dateDebut');
-            $voyage->duree = $request->input('duree');
-            $voyage->ville = $request->input('ville');
-            $voyage->prix = $request->input('prix');
-            $voyage->departement_id = $request->input('departement');
-            $voyage->categorie_id = $request->input('categorie');
-            $voyage->save();
-            return redirect()->route('voyages.admin')->with('message', 'Voyage modifié.');
+            $lesDepartements = Departement::all();
+            $lesCategories = Categorie::all();
+            $unVoyage = Voyage::where('id', '=', $id)->first();
+            return view('admin/voyage/detailler')->with('lesDepartements', $lesDepartements)
+                                                        ->with('lesCategories', $lesCategories)
+                                                        ->with('unVoyage', $unVoyage);
         }
         else
         {
@@ -178,17 +163,58 @@ class VoyageController extends Controller
         }
     }
 
+
+    //Fonction de modification d'un voyage de l'administration
+    public function adminModifier(Request $request)
+    {
+        if ($request->session()->get('admin') == 1)
+        {
+            // Valdation des données
+            // Valdation des données
+            $request->validate
+            ([
+                'nomVoyage' => ['required', 'string', 'min:3', 'max:41' ],
+                'dateDebut' => ['required', 'date'],
+                'duree' => ['required', 'integer', 'min:1'],
+                'ville' => ['required', 'string', 'min:3', 'max:24'],
+                'prix' => ['required', 'numeric', 'min:1'],
+                'departement' => ['required', 'integer'],
+                'categorie' => ['required', 'integer'],
+                'imgLink' => ['required', 'string', 'min:3', 'max:1000'],
+                'id' => ['required', 'integer']
+            ]);
+
+            $unVoyage = Voyage::find($request->input('id'));
+            $unVoyage->nomVoyage = $request->input('nomVoyage');
+            $unVoyage->dateDebut = $request->input('dateDebut');
+            $unVoyage->duree = $request->input('duree');
+            $unVoyage->ville = $request->input('ville');
+            $unVoyage->prix = $request->input('prix');
+            $unVoyage->departement_id = $request->input('departement');
+            $unVoyage->categorie_id = $request->input('categorie');
+            $unVoyage->imgLink = $request->input('imgLink');
+            $unVoyage->save();
+
+            $tousLesVoyages = Voyage::all();
+            return redirect()->route('admin.voyage.lister')->with('message', 'Les informations ont bien été enregistrées')
+                                                            ->with('tousLesVoyages', $tousLesVoyages);
+        }
+        else
+        {
+            return redirect()->route('voyage.afficher')->with('message', 'Accès refusé.');
+        }
+    }
     
     //Fonction de suppression d'un voyage de l'administration
-    public function adminSupprimerVoyage(Request $request, $id)
+    public function adminSupprimer(Request $request, $id)
     {
         if ($request->session()->get('admin')==1)
         {
-            $ventes = Vente::where('voyage_id', $id)->count();
-            if ($ventes == 0)
+            $lesVentes = Vente::where('voyage_id', $id)->count();
+            if ($lesVentes == 0)
             {
-                $voyage = Voyage::find($id);
-                $voyage->delete();
+                $unVoyage = Voyage::find($id);
+                $unVoyage->delete();
                 return back()->with('message', 'Voyage supprimé.');  
             }
             else
@@ -203,6 +229,7 @@ class VoyageController extends Controller
 
     }
 
+    // Fonction d'affichage des voyages de l'administration
     public function adminLister(Request $request)
     {
         if ($request->session()->get('admin')==1)

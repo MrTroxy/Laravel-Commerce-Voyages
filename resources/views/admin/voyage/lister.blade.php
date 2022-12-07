@@ -43,8 +43,8 @@
                                 <td>{{ $unVoyage->sonDepartement->nomDepartement }}</td>
                                 <td>{{ $unVoyage->saCategorie->categorie }}</td>
                                 <td>
-                                    <a href="/admin/voyage/modifierVoyage/{{ $unVoyage->id }}" class="btn btn-primary">Modifier</a>
-                                    <a href="/admin/voyage/supprimer/{{ $unVoyage->id }}" class="btn btn-danger">Supprimer</a>
+                                    <a href="/admin/voyage/detailler/{{ $unVoyage->id }}" class="btn btn-primary text-white">Modifier</a>
+                                    <a href="/admin/voyage/supprimer/{{ $unVoyage->id }}" class="btn btn-danger text-white">Supprimer</a>
                                 </td>
                             </tr>
                         @endforeach
