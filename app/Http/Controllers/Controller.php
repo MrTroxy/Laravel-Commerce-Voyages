@@ -1,4 +1,9 @@
 <?php
+/*
+Auteur : David Tremblay
+Date : Décembre 2022
+Description : Controleur de base
+*/
 
 namespace App\Http\Controllers;
 

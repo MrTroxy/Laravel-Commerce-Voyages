@@ -62,14 +62,14 @@ class ClientController extends Controller
         $nouveauClient->premierContact_id = $request->input('premierContact');
 
         // Vérification de l'unicité du courriel
-        $client = Client::where('courriel', $nouveauClient->courriel)->first();
-        if ($client != null)
+        $unClient = Client::where('courriel', $nouveauClient->courriel)->first();
+        if ($unClient != null)
         {
             return redirect()->back()->withInput()->with('message', 'Le courriel est déjà associé à un compte.');
         }
         // Vérification de l'unicité du téléphone
-        $client = Client::where('telephone', $nouveauClient->telephone)->first();
-        if ($client != null)
+        $unClient = Client::where('telephone', $nouveauClient->telephone)->first();
+        if ($unClient != null)
         {
             return redirect()->back()->withInput()->with('message', 'Le téléphone est déjà associé à un compte');
         }
