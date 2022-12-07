@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($tousLesClients as $unClient)
+                        @foreach($lesClients as $unClient)
                             <tr>
                                 <td>{{ $unClient->prenom }}</td>
                                 <td>{{ $unClient->nom }}</td>

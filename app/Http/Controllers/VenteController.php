@@ -16,9 +16,9 @@ class VenteController extends Controller
     {
         if ($request->session()->get('admin') == 1)
         {
-            $toutesLesVentes = Vente::all();
-            $nombreVentes = $toutesLesVentes->count();
-            return view('admin.vente.lister')->with("toutesLesVentes", $toutesLesVentes)
+            $lesVentes = Vente::all();
+            $nombreVentes = $lesVentes->count();
+            return view('admin.vente.lister')->with("lesVentes", $lesVentes)
                                              ->with("nombreVentes", $nombreVentes);
         }
         else

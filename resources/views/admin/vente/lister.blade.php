@@ -29,8 +29,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($toutesLesVentes as $uneVente)
-                        @if($uneVente->unPaiement->count() == 0)
+                        @foreach($lesVentes as $uneVente)
+                        @if($uneVente->lesPaiements->count() == 0)
                             <tr>
                                 <td>{{ $uneVente->dateVente }}</td>
                                 <td>{{ $uneVente->unClient->prenom }} {{ $uneVente->unClient->nom }}</td>
@@ -55,15 +55,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($toutesLesVentes as $uneVente)
-                        @if($uneVente->unPaiement->count() > 0)
-                            @if($uneVente->unPaiement->sum('montantPaiement') < round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2))
+                        @foreach($lesVentes as $uneVente)
+                        @if($uneVente->lesPaiements->count() > 0)
+                            @if($uneVente->lesPaiements->sum('montantPaiement') < round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2))
                                 <tr>
                                     <td>{{ $uneVente->dateVente }}</td>
                                     <td>{{ $uneVente->unClient->prenom }} {{ $uneVente->unClient->nom }}</td>
                                     <td><a href="/voyage/detailler/{{ $uneVente->unVoyage->id }}">{{$uneVente->unVoyage->nomVoyage}}</a></td>
                                     <td>{{ $uneVente->quantiteVoyageurs }}</td>
-                                    <td>{{ round($uneVente->unPaiement->sum('montantPaiement'), 2) }}$</td>
+                                    <td>{{ round($uneVente->lesPaiements->sum('montantPaiement'), 2) }}$</td>
                                     <td>{{ round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2) }}$</td>
                                 </tr>
                             @endif
@@ -85,15 +85,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($toutesLesVentes as $uneVente)
-                        @if($uneVente->unPaiement->count() > 0)
-                            @if($uneVente->unPaiement->sum('montantPaiement') >= round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2))
+                        @foreach($lesVentes as $uneVente)
+                        @if($uneVente->lesPaiements->count() > 0)
+                            @if($uneVente->lesPaiements->sum('montantPaiement') >= round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2))
                                 <tr>
                                     <td>{{ $uneVente->dateVente }}</td>
                                     <td>{{ $uneVente->unClient->prenom }} {{ $uneVente->unClient->nom }}</td>
                                     <td><a href="/voyage/detailler/{{ $uneVente->unVoyage->id }}">{{$uneVente->unVoyage->nomVoyage}}</a></td>
                                     <td>{{ $uneVente->quantiteVoyageurs }}</td>
-                                    <td>{{ $uneVente->unPaiement->sum('montantPaiement') }}$</td>
+                                    <td>{{ $uneVente->lesPaiements->sum('montantPaiement') }}$</td>
                                     <td>{{ round(((($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs) * (0.14975)) + ($uneVente->unVoyage->prix * $uneVente->quantiteVoyageurs)), 2) }}$</td>
                                 </tr>
                             @endif

@@ -15,7 +15,7 @@
 				</p>
 				<ul class="products">
 				
-					@foreach ($tousLesVoyages as $unVoyage) 
+					@foreach ($lesVoyages as $unVoyage) 
 						<li class="product">
 						<a href="./voyage/detailler/{{ $unVoyage->id }}">
 						<img class="productimg" src="{{ $unVoyage->imgLink }}" alt="">

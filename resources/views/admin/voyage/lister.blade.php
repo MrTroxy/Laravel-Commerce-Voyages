@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($tousLesVoyages as $unVoyage)
+                        @foreach($lesVoyages as $unVoyage)
                             <tr>
                                 <td><a href="/voyage/detailler/{{ $unVoyage->id }}">{{$unVoyage->nomVoyage}}</a></td>
                                 <td>{{ $unVoyage->dateDebut }}</td>

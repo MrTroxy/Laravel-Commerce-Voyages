@@ -162,10 +162,10 @@ class ClientController extends Controller
     //Fonction d'affichage de la liste des clients de l'administration
     public function adminLister(Request $request)
     {
-        $tousLesClients = Client::all();
+        $lesClients = Client::all();
         if ($request->session()->get('admin')==1)
         {
-            return view('admin/client/lister')->with('tousLesClients', $tousLesClients);
+            return view('admin/client/lister')->with('lesClients', $lesClients);
         }
         else
         {
@@ -227,9 +227,9 @@ class ClientController extends Controller
             $unClient->premierContact_id = $request->input('premierContact');
             $unClient->admin = $request->input('admin');
             $unClient->save();
-            $tousLesClients = Client::all();
+            $lesClients = Client::all();
             return redirect()->route('admin.client.lister')->with('message', 'Les informations ont bien été enregistrées')
-                                                            ->with('tousLesClients', $tousLesClients);
+                                                            ->with('lesClients', $lesClients);
         }
         else
         {
@@ -283,9 +283,9 @@ class ClientController extends Controller
             $unClient->premierContact_id = $request->input('premierContact');
             $unClient->admin = $request->input('admin');
             $unClient->save();
-            $tousLesClients = Client::all();
+            $lesClients = Client::all();
             return redirect()->route('admin.client.lister')->with('message', 'Le client à bien été ajouté')
-                                                            ->with('tousLesClients', $tousLesClients);
+                                                            ->with('lesClients', $lesClients);
         }
         else
         {

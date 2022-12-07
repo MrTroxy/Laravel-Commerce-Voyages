@@ -21,8 +21,8 @@
 								<div style="margin-left: 25%">
 									<h3>{{$uneVente->unVoyage->nomVoyage}}</h3><br>
 									<span class="price"><span class="amount">Date de l'achat : {{ $uneVente->dateVente }}</span></span><br>
-									@if($uneVente->unPaiement)
-										@foreach ($uneVente->unPaiement as $unPaiement)
+									@if($uneVente->lesPaiements)
+										@foreach ($uneVente->lesPaiements as $unPaiement)
 											<span class="price"><span class="amount">Montant payé : ${{ $unPaiement->montantPaiement }}</span></span><br>
 										@endforeach
 									@else

@@ -24,10 +24,10 @@ class VoyageController extends Controller
     //Affichage de la vitrine de voyages
     public function afficher()
     {
-            $tousLesVoyages = Voyage::all();
-            $nombreVoyages = $tousLesVoyages->count();
+            $lesVoyages = Voyage::all();
+            $nombreVoyages = $lesVoyages->count();
        
-            return view('/client/voyage/afficher')->with("tousLesVoyages", $tousLesVoyages)
+            return view('/client/voyage/afficher')->with("lesVoyages", $lesVoyages)
                                                     ->with("nombreVoyages", $nombreVoyages);
     }
 
@@ -52,9 +52,9 @@ class VoyageController extends Controller
     {
         if ($request->session()->get('admin')==1)
         {
-            $tousLesVoyages = Voyage::all();
-            $nombreVoyages = $tousLesVoyages->count();
-            return view('admin.voyage.lister')->with("tousLesVoyages", $tousLesVoyages)
+            $lesVoyages = Voyage::all();
+            $nombreVoyages = $lesVoyages->count();
+            return view('admin.voyage.lister')->with("lesVoyages", $lesVoyages)
                                                 ->with("nombreVoyages", $nombreVoyages);
         }
         else
@@ -108,10 +108,10 @@ class VoyageController extends Controller
                 $nouveauVoyage->categorie_id = $request->input('categorie');
                 $nouveauVoyage->save();
 
-                $tousLesVoyages = Voyage::all();
+                $lesVoyages = Voyage::all();
 
                 return redirect()->route('admin.voyage.lister')->with('message', 'Le voyage à bien été ajouté')
-                                                               ->with('tousLesClients', $tousLesVoyages);
+                                                               ->with('lesClients', $lesVoyages);
             }
             else
             {
@@ -175,9 +175,9 @@ class VoyageController extends Controller
             $unVoyage->imgLink = $request->input('imgLink');
             $unVoyage->save();
 
-            $tousLesVoyages = Voyage::all();
+            $lesVoyages = Voyage::all();
             return redirect()->route('admin.voyage.lister')->with('message', 'Les informations ont bien été enregistrées')
-                                                            ->with('tousLesVoyages', $tousLesVoyages);
+                                                            ->with('lesVoyages', $lesVoyages);
         }
         else
         {

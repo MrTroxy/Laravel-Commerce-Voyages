@@ -30,7 +30,7 @@ class Vente extends Model
     }
 
     // Fonction qui retourne les paiements associés à la vente
-    public function unPaiement()
+    public function lesPaiements()
     {
         return $this->hasMany('App\Models\Paiement','vente_id');
     }
