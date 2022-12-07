@@ -11,11 +11,16 @@
 
 // Auteur : David Tremblay
 
+
+
 ## Installation du projet
 
-Nom de la base de donnée : agencevoyage_dt
+Créer une base de donnée avec le nom : agencevoyage_dt
+Importer le script sql se trouvant dans le dossier "Base de donnée" du projet
+
+
 
 Pour faire fonctionner le projet, il faut se rendre dans la racine du dossier et faire la commande suivante :
 ## > php artisan serve
 
-Le site devrait fonctionner
+Le site devrait fonctionner parfaitement.
